@@ -247,7 +247,7 @@
     text-transform: uppercase;
   }
   .marquee-track span::after {
-    content: '✦'; margin-left: 32px; opacity: .5;
+    content: '\2736'; margin-left: 32px; opacity: .5;
   }
   @keyframes marquee {
     from { transform: translateX(0); }
@@ -680,7 +680,7 @@
   /* ── RESPONSIVE ────────────────────────────────────── */
   @media (max-width: 1024px) {
     .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 100px 0 60px; }
+    .hero-left { padding: 100px 28px 60px 28px; }
     .hero-right { height: 480px; }
     .hero-card { left: 20px; bottom: 32px; }
     .problem-grid, .impact-grid, .budget-inner, .footer-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -697,6 +697,7 @@
     .nav-links, .nav-cta .btn { display: none; }
     .hamburger { display: flex; }
     h1 { font-size: 44px; }
+    .hero-left { padding: 100px 24px 48px 24px; }
     .hero-stats { flex-wrap: wrap; gap: 28px; }
     .photo-mosaic { grid-template-rows: 200px 200px; }
     .meal-items { grid-template-columns: 1fr 1fr; }
@@ -706,6 +707,11 @@
     .impact-num { font-size: 38px; }
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .extra-gallery { grid-template-columns: repeat(2, 1fr) !important; grid-template-rows: repeat(5, 180px) !important; }
+  }
+  @media (max-width: 480px) {
+    .hero-left { padding: 88px 20px 40px 20px; }
+    .extra-gallery { grid-template-columns: 1fr !important; grid-template-rows: repeat(10, 200px) !important; }
   }
 </style>
 </head>
@@ -755,7 +761,7 @@
     </p>
     <div class="hero-actions">
       <a href="#donate" class="btn btn--orange">
-        ❤️ &nbsp;Support a Child
+        &#10084;&#65039; &nbsp;Support a Child
       </a>
       <a href="#how" class="btn btn--ghost">Learn More</a>
     </div>
@@ -765,11 +771,11 @@
         <div class="stat-label">per child<br>per meal</div>
       </div>
       <div>
-        <div class="stat-num">3×</div>
+        <div class="stat-num">3&times;</div>
         <div class="stat-label">meals per<br>week</div>
       </div>
       <div>
-        <div class="stat-num">Gr 1–6</div>
+        <div class="stat-num">Gr 1&ndash;6</div>
         <div class="stat-label">learners<br>targeted</div>
       </div>
     </div>
@@ -777,11 +783,10 @@
 
   <div class="hero-right">
     <img class="hero-img-main" src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_1600/ojiko/WhatsApp_Image_2026-03-31_at_10.51.26_PM_u0ksdy.jpg" alt="Children at school in Ndhiwa" />
-    
     <div class="hero-overlay-text">Ndhiwa</div>
     <div class="hero-card">
-      <div class="hero-card-icon">🥗</div>
-      <p>Balanced meals include <strong>proteins, vegetables</strong> and locally sourced staples — designed by nutrition.</p>
+      <div class="hero-card-icon">&#x1F957;</div>
+      <p>Balanced meals include <strong>proteins, vegetables</strong> and locally sourced staples &mdash; designed by nutrition.</p>
     </div>
   </div>
 </section>
@@ -817,7 +822,7 @@
         <p class="section-label">The Problem</p>
         <h2>Hunger is the <em>hidden lesson</em> no child should learn.</h2>
         <p class="body-lg">
-          In Ndhiwa Sub-County, widespread poverty means thousands of children walk into classrooms every morning having eaten little — or nothing at all. A hungry mind cannot focus, retain, or grow.
+          In Ndhiwa Sub-County, widespread poverty means thousands of children walk into classrooms every morning having eaten little &mdash; or nothing at all. A hungry mind cannot focus, retain, or grow.
         </p>
         <p class="body-lg">
           Existing feeding programs are inconsistent, limited in reach, and prioritize calories over nutritional quality. We're changing that.
@@ -826,31 +831,30 @@
 
       <div class="problem-cards">
         <div class="problem-card reveal">
-          <div class="problem-card-icon">😔</div>
+          <div class="problem-card-icon">&#x1F614;</div>
           <div>
-            <h4>Poor Concentration & Performance</h4>
+            <h4>Poor Concentration &amp; Performance</h4>
             <p>Hunger directly impairs cognitive function. Children who arrive unfed struggle to absorb lessons, participate, or perform at their potential.</p>
           </div>
         </div>
         <div class="problem-card reveal reveal-delay-1">
-          <div class="problem-card-icon">📉</div>
+          <div class="problem-card-icon">&#x1F4C9;</div>
           <div>
-            <h4>High Absenteeism & Dropout</h4>
+            <h4>High Absenteeism &amp; Dropout</h4>
             <p>Food insecurity at home translates into irregular attendance and early dropout, particularly among girls and children from the most vulnerable households.</p>
           </div>
         </div>
         <div class="problem-card reveal reveal-delay-2">
-          <div class="problem-card-icon">🌾</div>
+          <div class="problem-card-icon">&#x1F33E;</div>
           <div>
             <h4>Carbohydrate-Only Diets</h4>
-            <p>Where meals exist, they're often ugali alone — no protein, no vegetables. Children are fed, but not nourished. Micronutrient deficiencies quietly harm their growth.</p>
+            <p>Where meals exist, they're often ugali alone &mdash; no protein, no vegetables. Children are fed, but not nourished. Micronutrient deficiencies quietly harm their growth.</p>
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- Photo mosaic — replace placeholders with Cloudinary images -->
     <div class="photo-mosaic" style="margin-top:72px;">
       <div class="photo-slot">
         <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.16_PM_xs6aom.jpg" alt="School visit" style="width:100%;height:100%;object-fit:cover;" />
@@ -872,28 +876,28 @@
       <p class="section-label">How It Works</p>
       <h2>Simple, local, <em>dignified.</em></h2>
       <p class="how-intro">
-        We partner directly with schools, source food from local farmers, and use existing school kitchens — keeping costs low and community benefit high.
+        We partner directly with schools, source food from local farmers, and use existing school kitchens &mdash; keeping costs low and community benefit high.
       </p>
     </div>
 
     <div class="steps">
       <div class="step reveal">
-        <div class="step-icon">🏫</div>
+        <div class="step-icon">&#x1F3EB;</div>
         <div class="step-num">1</div>
         <h3>School Selection</h3>
         <p>We identify public primary schools in Ndhiwa with the highest proportion of vulnerable learners and no consistent feeding program, working with Sub-County education offices.</p>
       </div>
       <div class="step reveal reveal-delay-1">
-        <div class="step-icon">🛒</div>
+        <div class="step-icon">&#x1F6D2;</div>
         <div class="step-num">2</div>
         <h3>Local Procurement</h3>
-        <p>Dry foods are bought in bulk from local markets. Vegetables are sourced seasonally from nearby farmers — supporting local livelihoods while reducing costs.</p>
+        <p>Dry foods are bought in bulk from local markets. Vegetables are sourced seasonally from nearby farmers &mdash; supporting local livelihoods while reducing costs.</p>
       </div>
       <div class="step reveal reveal-delay-2">
-        <div class="step-icon">🍽️</div>
+        <div class="step-icon">&#x1F37D;&#xFE0F;</div>
         <div class="step-num">3</div>
         <h3>Hot Meal, Every Day</h3>
-        <p>Using existing school kitchens, trained cooks prepare one balanced hot lunch per feeding day — served during the official lunch break, 3 days per week during the pilot.</p>
+        <p>Using existing school kitchens, trained cooks prepare one balanced hot lunch per feeding day &mdash; served during the official lunch break, 3 days per week during the pilot.</p>
       </div>
     </div>
 
@@ -901,27 +905,27 @@
       <h3>What's on the Plate</h3>
       <div class="meal-items">
         <div class="meal-item">
-          <span>🌽</span>
-          <p>Cereals & Staples</p>
+          <span>&#x1F33D;</span>
+          <p>Cereals &amp; Staples</p>
           <small>Ugali, rice, sweet potato</small>
         </div>
         <div class="meal-item">
-          <span>🫘</span>
+          <span>&#x1FAD8;</span>
           <p>Protein</p>
           <small>Beans, lentils, green grams</small>
         </div>
         <div class="meal-item">
-          <span>🥬</span>
+          <span>&#x1F96C;</span>
           <p>Vegetables</p>
           <small>Sukuma, managu, kunde</small>
         </div>
         <div class="meal-item">
-          <span>🥚</span>
+          <span>&#x1F95A;</span>
           <p>Occasional Eggs</p>
           <small>Protein boost</small>
         </div>
         <div class="meal-item">
-          <span>🍊</span>
+          <span>&#x1F34A;</span>
           <p>Seasonal Fruit</p>
           <small>Micronutrient support</small>
         </div>
@@ -961,11 +965,11 @@
           Every meal served is an investment in a child's ability to sit, focus, engage, and achieve. Attendance improves. Teachers notice the difference. Parents trust school more.
         </p>
         <blockquote class="impact-quote">
-          "A child who eats well today is a problem-solver, a leader, and a contributor tomorrow."
-          <cite>— Hot Meals High Grades Founding Vision</cite>
+          &ldquo;A child who eats well today is a problem-solver, a leader, and a contributor tomorrow.&rdquo;
+          <cite>&mdash; Hot Meals High Grades Founding Vision</cite>
         </blockquote>
         <p class="body-lg">
-          Our pilot phase collects data on attendance, concentration, and performance — building the evidence base to scale to more schools and more grades across Homa Bay County.
+          Our pilot phase collects data on attendance, concentration, and performance &mdash; building the evidence base to scale to more schools and more grades across Homa Bay County.
         </p>
       </div>
 
@@ -982,7 +986,6 @@
       <p>Real visits, real schools, real children. These moments remind us why every shilling counts.</p>
     </div>
 
-    <!-- Gallery grid — swap placeholders for Cloudinary images -->
     <div class="gallery-grid">
       <div class="gallery-slot tall">
         <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.20_PM_hifg9g.jpg" alt="Gallery photo" style="width:100%;height:100%;object-fit:cover;" />
@@ -1003,7 +1006,7 @@
 <!-- ══ EXTRA GALLERY STRIP ════════════════════════════════ -->
 <section style="padding:0 0 100px;background:var(--warm-white);">
   <div class="container">
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:220px 220px;gap:12px;border-radius:12px;overflow:hidden;">
+    <div class="extra-gallery" style="display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:220px 220px;gap:12px;border-radius:12px;overflow:hidden;">
       <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.23_PM_vb2sqz.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
       <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.19_PM_1_l5s2ba.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
       <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.18_PM_qknjc5.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
@@ -1030,19 +1033,19 @@
       <div class="cost-card reveal">
         <h3>Cost Per Child</h3>
         <div class="cost-big">KES <sup></sup>35</div>
-        <p class="cost-sub">per child · per hot meal · fully nutritious</p>
+        <p class="cost-sub">per child &middot; per hot meal &middot; fully nutritious</p>
 
         <div class="cost-scenarios">
           <div class="cost-scenario">
             <div>
-              <p>100 learners · 3 days/week</p>
+              <p>100 learners &middot; 3 days/week</p>
               <p style="font-size:12px;color:rgba(255,255,255,.4)">Monthly</p>
             </div>
             <strong>KES 42,000</strong>
           </div>
           <div class="cost-scenario">
             <div>
-              <p>200 learners · 3 days/week</p>
+              <p>200 learners &middot; 3 days/week</p>
               <p style="font-size:12px;color:rgba(255,255,255,.4)">Monthly</p>
             </div>
             <strong>KES 84,000</strong>
@@ -1050,7 +1053,7 @@
         </div>
 
         <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);">
-          <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;">Every purchase uses bulk buying, local sourcing, and community cooks — minimising overhead so maximum value reaches the child.</p>
+          <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;">Every purchase uses bulk buying, local sourcing, and community cooks &mdash; minimising overhead so maximum value reaches the child.</p>
         </div>
       </div>
 
@@ -1066,28 +1069,28 @@
           </thead>
           <tbody>
             <tr>
-              <td>🌽 Cereals & Legumes</td>
+              <td>&#x1F33D; Cereals &amp; Legumes</td>
               <td style="font-size:13px;color:var(--text-light);">Maize/rice + beans/lentils</td>
               <td>20</td>
             </tr>
             <tr>
-              <td>🥬 Vegetables & Fruit</td>
+              <td>&#x1F96C; Vegetables &amp; Fruit</td>
               <td style="font-size:13px;color:var(--text-light);">Sukuma, managu, seasonal fruit</td>
               <td>8</td>
             </tr>
             <tr>
-              <td>🫙 Cooking Oil & Salt</td>
+              <td>&#x1FAD9; Cooking Oil &amp; Salt</td>
               <td style="font-size:13px;color:var(--text-light);">Shared across meals</td>
               <td>3</td>
             </tr>
             <tr>
-              <td>🔥 Cooking Fuel</td>
+              <td>&#x1F525; Cooking Fuel</td>
               <td style="font-size:13px;color:var(--text-light);">Firewood / LPG contribution</td>
               <td>2</td>
             </tr>
             <tr>
-              <td>👩‍🍳 Cook & Logistics</td>
-              <td style="font-size:13px;color:var(--text-light);">Token stipend & support</td>
+              <td>&#x1F469;&#x200D;&#x1F373; Cook &amp; Logistics</td>
+              <td style="font-size:13px;color:var(--text-light);">Token stipend &amp; support</td>
               <td>2</td>
             </tr>
           </tbody>
@@ -1101,7 +1104,7 @@
 
         <div style="margin-top:40px;padding:24px;background:var(--green-pale);border-radius:8px;">
           <p style="font-size:14px;line-height:1.7;color:var(--green);font-weight:500;">
-            💡 <strong>KES 1,050</strong> feeds one child for an entire month (3 days/week, 4 weeks). That's less than a typical family's mobile data spend.
+            &#x1F4A1; <strong>KES 1,050</strong> feeds one child for an entire month (3 days/week, 4 weeks). That's less than a typical family's mobile data spend.
           </p>
         </div>
       </div>
@@ -1113,11 +1116,11 @@
 <section class="partners">
   <div class="container">
     <div class="partners-inner">
-      <p class="partners-label">Partners & Collaborators</p>
+      <p class="partners-label">Partners &amp; Collaborators</p>
       <div class="partner-logos">
         <div class="partner-pill">Ndhiwa Sub-County Education Office</div>
         <div class="partner-pill">Homa Bay County Government</div>
-        <div class="partner-pill">Local Farmers & Women Groups</div>
+        <div class="partner-pill">Local Farmers &amp; Women Groups</div>
         <div class="partner-pill">Parents' Associations</div>
         <div class="partner-pill">School Boards of Management</div>
       </div>
@@ -1134,16 +1137,11 @@
       KES 35 is one hot, balanced meal. KES 1,050 is a month of lunches. Whatever you give, it goes directly to a child who needs it most.
     </p>
     <div class="cta-actions">
-      <!--
-        PAYSTACK INTEGRATION:
-        Replace this button's onclick with your Paystack popup handler.
-        e.g.: onclick="payWithPaystack()"
-      -->
       <button class="btn btn--gold" onclick="alert('Paystack donation coming soon! We\'re setting this up. Thank you for your heart.')">
-        ❤️ &nbsp;Donate via Paystack
+        &#10084;&#65039; &nbsp;Donate via Paystack
       </button>
-      <a href="/cdn-cgi/l/email-protection#82e1edecf6e3e1f6c2eaedf6efe7e3eef1eaebe5eae5f0e3e6e7f1acedf0e5" class="btn btn--white-ghost">
-        ✉️ &nbsp;Partner With Us
+      <a href="mailto:contact@hotmealshighgrades.org" class="btn btn--white-ghost">
+        &#x2709;&#xFE0F; &nbsp;Partner With Us
       </a>
     </div>
     <p class="donation-note">Paystack integration active soon. Contact us to donate by M-Pesa or bank transfer in the meantime.</p>
@@ -1158,7 +1156,7 @@
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
           <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_200/ojiko/WhatsApp_Image_2026-03-30_at_7.58.03_PM_of12uu.jpg" alt="Hot Meals High Grades logo" style="height:48px;width:auto;object-fit:contain;border-radius:4px;" />
         </div>
-        <p>Providing nutritious lunch meals to public primary school learners in Ndhiwa Sub-County, Homa Bay — because every child deserves to learn on a full stomach.</p>
+        <p>Providing nutritious lunch meals to public primary school learners in Ndhiwa Sub-County, Homa Bay &mdash; because every child deserves to learn on a full stomach.</p>
         <div class="footer-tagline">Serving Plates of Promise to the Next Generation</div>
       </div>
 
@@ -1178,28 +1176,26 @@
         <h4>Get Involved</h4>
         <ul>
           <li><a href="#donate">Donate</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#c5a6aaabb1a4a6b185adaab1a8a0a4a9b6adaca2ada2b7a4a1a0b6ebaab7a2">Partner With Us</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#caa9a5a4beaba9be8aa2a5bea7afaba6b9a2a3ada2adb8abaeafb9e4a5b8ad">Volunteer</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#b8dbd7d6ccd9dbccf8d0d7ccd5ddd9d4cbd0d1dfd0dfcad9dcddcb96d7cadf">Sponsor a School</a></li>
+          <li><a href="mailto:contact@hotmealshighgrades.org">Partner With Us</a></li>
+          <li><a href="mailto:contact@hotmealshighgrades.org">Volunteer</a></li>
+          <li><a href="mailto:contact@hotmealshighgrades.org">Sponsor a School</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>© 2025 Hot Meals High Grades. All rights reserved. Registered in Kenya.</p>
-      <p>Built with 🧡 for every child who deserves better.</p>
+      <p>&copy; 2025 Hot Meals High Grades. All rights reserved. Registered in Kenya.</p>
+      <p>Built with &#x1F9E1; for every child who deserves better.</p>
     </div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ── Nav scroll effect
+<script>
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  // ── Intersection Observer for reveal animations
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1211,7 +1207,6 @@
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
 
-  // ── Mobile menu toggle (basic)
   function toggleMenu() {
     const links = document.querySelector('.nav-links');
     if (!links) return;
@@ -1222,7 +1217,6 @@
     }
   }
 
-  // ── Duplicate marquee for seamless loop
   const track = document.getElementById('marquee');
   track.innerHTML += track.innerHTML;
 </script>
