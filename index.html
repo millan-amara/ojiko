@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hot Meals High Grades — Serving Plates of Promise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+
+<style>
+  /* ── DESIGN TOKENS ─────────────────────────────────── */
+  :root {
+    --orange:   #E05C1A;
+    --green:    #2A6B3C;
+    --gold:     #F5A623;
+    --cream:    #FAF6EE;
+    --warm-white: #FFFDF8;
+    --bark:     #3D2B1F;
+    --mist:     #EAE4D8;
+    --text:     #2C2218;
+    --text-light:#6B5744;
+    --green-pale:#EAF2EC;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  img { display: block; max-width: 100%; }
+  a  { text-decoration: none; color: inherit; }
+
+  /* ── UTILITY ────────────────────────────────────────── */
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+  }
+  .tag--green  { background: var(--green-pale); color: var(--green); }
+  .tag--orange { background: #FDF0E8; color: var(--orange); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s, background .2s;
+    border: none;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn--orange {
+    background: var(--orange); color: #fff;
+    box-shadow: 0 6px 24px rgba(224,92,26,.3);
+  }
+  .btn--orange:hover { background: #c44e14; box-shadow: 0 10px 32px rgba(224,92,26,.4); }
+  .btn--green {
+    background: var(--green); color: #fff;
+    box-shadow: 0 6px 24px rgba(42,107,60,.25);
+  }
+  .btn--green:hover  { background: #225532; }
+  .btn--ghost {
+    background: transparent; color: var(--green);
+    border: 2px solid var(--green);
+  }
+  .btn--ghost:hover { background: var(--green-pale); }
+
+  section { position: relative; }
+
+  /* ── NAV ────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,253,248,.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(61,43,31,.08);
+    transition: box-shadow .3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .nav-logo img {
+    height: 48px; width: auto;
+  }
+  .nav-logo-text {
+    line-height: 1.1;
+  }
+  .nav-logo-text strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 15px;
+    color: var(--orange);
+  }
+  .nav-logo-text span {
+    font-size: 11px; color: var(--green); font-weight: 500;
+    letter-spacing: .05em;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--text-light);
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta { display: flex; align-items: center; gap: 12px; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
+
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+    background: var(--cream);
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px 80px max(28px, calc((100vw - 1160px) / 2 + 28px));
+    position: relative;
+    z-index: 2;
+  }
+  .hero-left .container { padding: 0; }
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow-line { width: 40px; height: 2px; background: var(--orange); }
+  .hero-eyebrow span {
+    font-size: 12px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--orange);
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 5vw, 76px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--bark);
+    margin-bottom: 28px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--green);
+    display: block;
+  }
+  .hero-sub {
+    font-size: 17px; line-height: 1.7;
+    color: var(--text-light); max-width: 480px;
+    margin-bottom: 44px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(61,43,31,.1);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 13px; color: var(--text-light);
+    margin-top: 4px; font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--green) 0%, #1a4a27 100%);
+    z-index: 0;
+  }
+  /* Cloudinary hero image goes here */
+  .hero-img-main {
+    position: absolute; inset: 0;
+    object-fit: cover; width: 100%; height: 100%;
+    z-index: 1;
+    opacity: .85;
+    mix-blend-mode: multiply;
+  }
+  .hero-card {
+    position: absolute; bottom: 48px; left: 28px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 24px;
+    box-shadow: 0 16px 48px rgba(0,0,0,.28);
+    z-index: 3;
+    max-width: 240px;
+  }
+  .hero-card-icon { font-size: 28px; margin-bottom: 8px; }
+  .hero-card p {
+    font-size: 13px; line-height: 1.5; color: var(--text-light);
+  }
+  .hero-card strong { color: var(--green); font-weight: 700; }
+  .hero-overlay-text {
+    position: absolute; top: 48px; right: 36px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 88px;
+    color: rgba(255,255,255,.07);
+    line-height: 1;
+    z-index: 2;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* ── MARQUEE ────────────────────────────────────────── */
+  .marquee-bar {
+    background: var(--green);
+    color: #fff; overflow: hidden;
+    padding: 14px 0;
+  }
+  .marquee-track {
+    display: flex; gap: 0;
+    animation: marquee 30s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-track span {
+    padding: 0 32px;
+    font-size: 13px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .marquee-track span::after {
+    content: '✦'; margin-left: 32px; opacity: .5;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── PROBLEM ────────────────────────────────────────── */
+  .problem {
+    padding: 100px 0;
+    background: var(--warm-white);
+  }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .section-label {
+    font-size: 12px; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; display: block;
+    width: 32px; height: 2px; background: var(--orange);
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 3.5vw, 52px);
+    font-weight: 700; line-height: 1.12;
+    color: var(--bark);
+    margin-bottom: 24px;
+  }
+  h2 em { font-style: italic; color: var(--green); }
+  .body-lg {
+    font-size: 17px; line-height: 1.75;
+    color: var(--text-light);
+    margin-bottom: 20px;
+  }
+  .problem-cards {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .problem-card {
+    display: flex; gap: 18px; align-items: flex-start;
+    padding: 24px;
+    background: var(--cream);
+    border-radius: 8px;
+    border-left: 3px solid var(--orange);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .problem-card:hover { transform: translateX(4px); box-shadow: 0 8px 32px rgba(0,0,0,.06); }
+  .problem-card-icon { font-size: 28px; flex-shrink: 0; }
+  .problem-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; color: var(--bark); }
+  .problem-card p  { font-size: 14px; line-height: 1.6; color: var(--text-light); }
+
+  /* photo mosaic */
+  .photo-mosaic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 240px 240px;
+    gap: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .photo-mosaic .photo-slot {
+    background: var(--mist);
+    position: relative; overflow: hidden;
+  }
+  .photo-mosaic .photo-slot:first-child {
+    grid-row: span 2;
+  }
+  .photo-mosaic .photo-slot img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .4s;
+  }
+  .photo-mosaic .photo-slot:hover img { transform: scale(1.05); }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 10px; color: var(--text-light);
+    font-size: 13px; text-align: center; padding: 20px;
+  }
+  .photo-placeholder span { font-size: 32px; }
+
+  /* ── SOLUTION / HOW IT WORKS ───────────────────────── */
+  .how {
+    padding: 100px 0;
+    background: var(--green);
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+  }
+  .how::before {
+    content: 'HOW IT WORKS';
+    position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 140px; font-weight: 900;
+    color: rgba(255,255,255,.04);
+    white-space: nowrap; pointer-events: none;
+  }
+  .how .section-label { color: var(--gold); }
+  .how .section-label::before { background: var(--gold); }
+  .how h2 { color: #fff; }
+  .how h2 em { color: var(--gold); }
+  .how-intro { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,.75); max-width: 560px; }
+  .how-header { margin-bottom: 64px; }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute; top: 36px; left: 60px; right: 60px; height: 1px;
+    background: rgba(255,255,255,.15);
+    z-index: 0;
+  }
+  .step {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 40px 24px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    transition: background .2s, transform .2s;
+  }
+  .step:hover { background: rgba(255,255,255,.1); transform: translateY(-4px); }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--gold);
+    color: var(--bark);
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+  }
+  .step h3 { font-family: 'DM Serif Display', serif; font-size: 20px; margin-bottom: 12px; color: #fff; }
+  .step p  { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,.7); }
+  .step-icon { font-size: 32px; margin-bottom: 12px; }
+
+  /* meal plate visual */
+  .meal-plate {
+    margin-top: 72px;
+    padding: 48px;
+    background: rgba(255,255,255,.06);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.1);
+  }
+  .meal-plate h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; color: #fff; text-align: center;
+    margin-bottom: 36px;
+  }
+  .meal-items {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+  .meal-item {
+    text-align: center;
+    padding: 24px 12px;
+    background: rgba(255,255,255,.06);
+    border-radius: 10px;
+    transition: background .2s;
+  }
+  .meal-item:hover { background: rgba(255,255,255,.12); }
+  .meal-item span { font-size: 36px; display: block; margin-bottom: 10px; }
+  .meal-item p  { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85); margin-bottom: 4px; }
+  .meal-item small { font-size: 11px; color: rgba(255,255,255,.5); }
+
+  /* ── IMPACT ────────────────────────────────────────── */
+  .impact {
+    padding: 100px 0;
+    background: var(--cream);
+  }
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .impact-numbers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,.1);
+  }
+  .impact-num-card {
+    padding: 44px 36px;
+    background: var(--green);
+    color: #fff;
+    transition: background .2s;
+  }
+  .impact-num-card:nth-child(2) { background: var(--orange); }
+  .impact-num-card:nth-child(3) { background: var(--bark); }
+  .impact-num-card:nth-child(4) { background: #1e5430; }
+  .impact-num-card:hover { filter: brightness(1.08); }
+  .impact-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px; font-weight: 900;
+    line-height: 1; margin-bottom: 8px;
+    color: #fff;
+  }
+  .impact-num sup { font-size: 26px; vertical-align: super; }
+  .impact-num-label { font-size: 14px; color: rgba(255,255,255,.75); font-weight: 500; line-height: 1.4; }
+
+  .impact-right h2 { margin-bottom: 20px; }
+  .impact-quote {
+    margin: 32px 0;
+    padding: 28px 32px;
+    border-left: 4px solid var(--gold);
+    background: #fff;
+    border-radius: 0 8px 8px 0;
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--bark);
+    line-height: 1.55;
+  }
+  .impact-quote cite {
+    display: block; margin-top: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: 13px; font-weight: 600;
+    color: var(--green);
+  }
+
+  /* ── GALLERY ───────────────────────────────────────── */
+  .gallery { padding: 100px 0; background: var(--warm-white); }
+  .gallery-header { text-align: center; margin-bottom: 56px; }
+  .gallery-header h2 { margin-bottom: 16px; }
+  .gallery-header p { font-size: 17px; color: var(--text-light); max-width: 500px; margin: 0 auto; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 300px 300px;
+    gap: 12px;
+    border-radius: 12px; overflow: hidden;
+  }
+  .gallery-slot {
+    background: var(--mist);
+    position: relative; overflow: hidden;
+  }
+  .gallery-slot img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+  .gallery-slot:hover img { transform: scale(1.06); }
+  .gallery-slot.tall { grid-row: span 2; }
+  .gallery-slot.wide { grid-column: span 2; }
+  .gallery-slot .photo-placeholder { height: 100%; }
+
+  /* ── BUDGET ────────────────────────────────────────── */
+  .budget {
+    padding: 100px 0;
+    background: var(--cream);
+  }
+  .budget-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px; align-items: start;
+  }
+  .cost-card {
+    background: var(--green);
+    border-radius: 16px;
+    padding: 48px 40px;
+    color: #fff;
+    position: sticky; top: 100px;
+  }
+  .cost-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px; font-weight: 900;
+    line-height: 1; color: var(--gold);
+    margin: 16px 0 4px;
+  }
+  .cost-big sup { font-size: 36px; vertical-align: super; }
+  .cost-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 8px; }
+  .cost-sub { font-size: 14px; color: rgba(255,255,255,.6); margin-bottom: 32px; }
+  .cost-scenarios { display: flex; flex-direction: column; gap: 12px; }
+  .cost-scenario {
+    padding: 18px 20px;
+    background: rgba(255,255,255,.08);
+    border-radius: 8px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cost-scenario p { font-size: 13px; color: rgba(255,255,255,.7); }
+  .cost-scenario strong { font-size: 16px; color: var(--gold); font-family: 'Playfair Display', serif; }
+
+  .budget-breakdown h3 {
+    font-family: 'Playfair Display', serif; font-size: 28px;
+    margin-bottom: 32px; color: var(--bark);
+  }
+  .breakdown-table { width: 100%; border-collapse: collapse; }
+  .breakdown-table thead th {
+    text-align: left; font-size: 11px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--text-light); padding-bottom: 16px;
+    border-bottom: 2px solid var(--mist);
+  }
+  .breakdown-table tbody tr {
+    border-bottom: 1px solid var(--mist);
+    transition: background .15s;
+  }
+  .breakdown-table tbody tr:hover { background: #fff; }
+  .breakdown-table td {
+    padding: 18px 0;
+    font-size: 15px; color: var(--text);
+  }
+  .breakdown-table td:last-child {
+    text-align: right; font-weight: 700; color: var(--green);
+    font-family: 'Playfair Display', serif; font-size: 17px;
+  }
+  .breakdown-table tfoot td {
+    padding-top: 20px;
+    font-weight: 700; font-size: 18px;
+    border-top: 2px solid var(--bark);
+    color: var(--bark);
+    font-family: 'Playfair Display', serif;
+  }
+  .breakdown-table tfoot td:last-child { color: var(--orange); font-size: 22px; }
+  .bar-row { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+  .bar { height: 4px; border-radius: 2px; background: var(--green); opacity: .6; }
+
+  /* ── PARTNERS ──────────────────────────────────────── */
+  .partners {
+    padding: 72px 0;
+    background: var(--warm-white);
+    border-top: 1px solid var(--mist);
+  }
+  .partners-inner { text-align: center; }
+  .partners-label {
+    font-size: 12px; font-weight: 600; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--text-light);
+    margin-bottom: 36px;
+  }
+  .partner-logos {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    align-items: center; gap: 40px;
+  }
+  .partner-pill {
+    padding: 16px 32px;
+    background: var(--mist);
+    border-radius: 6px;
+    font-size: 14px; font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: .04em;
+  }
+
+  /* ── DONATE CTA ────────────────────────────────────── */
+  .cta-section {
+    padding: 120px 0;
+    background: var(--bark);
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(245,166,35,.12) 0%, transparent 70%);
+  }
+  .cta-section .section-label { justify-content: center; color: var(--gold); }
+  .cta-section .section-label::before { background: var(--gold); }
+  .cta-section h2 { color: #fff; margin-bottom: 20px; }
+  .cta-section h2 em { color: var(--gold); }
+  .cta-section p { font-size: 18px; color: rgba(255,255,255,.65); max-width: 540px; margin: 0 auto 48px; line-height: 1.7; }
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn--gold {
+    background: var(--gold); color: var(--bark);
+    font-weight: 700;
+    box-shadow: 0 8px 32px rgba(245,166,35,.35);
+  }
+  .btn--gold:hover { background: #e09610; box-shadow: 0 12px 40px rgba(245,166,35,.45); }
+  .btn--white-ghost {
+    background: transparent; color: #fff;
+    border: 2px solid rgba(255,255,255,.3);
+  }
+  .btn--white-ghost:hover { border-color: #fff; background: rgba(255,255,255,.07); }
+
+  .donation-note {
+    margin-top: 32px;
+    font-size: 13px; color: rgba(255,255,255,.4);
+  }
+
+  /* ── FOOTER ────────────────────────────────────────── */
+  footer {
+    background: #1a1208;
+    color: rgba(255,255,255,.6);
+    padding: 72px 0 40px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+  .footer-brand p {
+    font-size: 14px; line-height: 1.7;
+    margin: 16px 0 24px; max-width: 280px;
+  }
+  .footer-tagline {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 16px; color: var(--gold);
+  }
+  .footer-col h4 {
+    font-size: 13px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: rgba(255,255,255,.9); margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,.5); transition: color .2s; }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 32px; font-size: 13px;
+  }
+  .footer-bottom a { color: var(--gold); }
+
+  /* ── SCROLL ANIMATIONS ─────────────────────────────── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: .1s; }
+  .reveal-delay-2 { transition-delay: .2s; }
+  .reveal-delay-3 { transition-delay: .3s; }
+
+  /* ── RESPONSIVE ────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 100px 0 60px; }
+    .hero-right { height: 480px; }
+    .hero-card { left: 20px; bottom: 32px; }
+    .problem-grid, .impact-grid, .budget-inner, .footer-grid { grid-template-columns: 1fr; gap: 48px; }
+    .impact-numbers { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .steps::before { display: none; }
+    .meal-items { grid-template-columns: repeat(3, 1fr); }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-slot.wide { grid-column: span 2; }
+    .gallery-slot.tall { grid-row: span 1; }
+    .cost-card { position: static; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta .btn { display: none; }
+    .hamburger { display: flex; }
+    h1 { font-size: 44px; }
+    .hero-stats { flex-wrap: wrap; gap: 28px; }
+    .photo-mosaic { grid-template-rows: 200px 200px; }
+    .meal-items { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .gallery-slot.tall, .gallery-slot.wide { grid-column: span 1; grid-row: span 1; height: 260px; }
+    .impact-num-card { padding: 28px 20px; }
+    .impact-num { font-size: 38px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_200/ojiko/WhatsApp_Image_2026-03-30_at_7.58.03_PM_of12uu.jpg" alt="Hot Meals High Grades logo" style="height:56px;width:auto;object-fit:contain;" />
+        <div class="nav-logo-text">
+          <strong>Hot Meals High Grades</strong>
+          <span>Serving Plates of Promise</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#budget">Transparency</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#donate" class="btn btn--orange">Donate Now</a>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-left container">
+    <!-- <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Ndhiwa Sub-County, Homa Bay</span>
+    </div> -->
+    <h1>
+      Every child<br>deserves to<br>
+      <em>learn on a full stomach.</em>
+    </h1>
+    <p class="hero-sub">
+      Hunger doesn't wait for the school bell. We're bringing hot, nutritious lunches to public primary school learners across Kenya — because a fed child is a child who can dream.
+    </p>
+    <div class="hero-actions">
+      <a href="#donate" class="btn btn--orange">
+        ❤️ &nbsp;Support a Child
+      </a>
+      <a href="#how" class="btn btn--ghost">Learn More</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">KES 35</div>
+        <div class="stat-label">per child<br>per meal</div>
+      </div>
+      <div>
+        <div class="stat-num">3×</div>
+        <div class="stat-label">meals per<br>week</div>
+      </div>
+      <div>
+        <div class="stat-num">Gr 1–6</div>
+        <div class="stat-label">learners<br>targeted</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img class="hero-img-main" src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_1600/ojiko/WhatsApp_Image_2026-03-31_at_10.51.26_PM_u0ksdy.jpg" alt="Children at school in Ndhiwa" />
+    
+    <div class="hero-overlay-text">Ndhiwa</div>
+    <div class="hero-card">
+      <div class="hero-card-icon">🥗</div>
+      <p>Balanced meals include <strong>proteins, vegetables</strong> and locally sourced staples — designed by nutrition.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ════════════════════════════════════════════ -->
+<div class="marquee-bar" aria-hidden="true">
+  <div class="marquee-track" id="marquee">
+    <span>Hot Meals, High Grades</span>
+    <span>Ndhiwa Sub-County</span>
+    <span>Grade 1 to Grade 6</span>
+    <span>Locally Sourced Food</span>
+    <span>Nutrition First</span>
+    <span>Serving Plates of Promise</span>
+    <span>Homa Bay County</span>
+    <span>Community Powered</span>
+    <span>Hot Meals, High Grades</span>
+    <span>Ndhiwa Sub-County</span>
+    <span>Grade 1 to Grade 6</span>
+    <span>Locally Sourced Food</span>
+    <span>Nutrition First</span>
+    <span>Serving Plates of Promise</span>
+    <span>Homa Bay County</span>
+    <span>Community Powered</span>
+  </div>
+</div>
+
+<!-- ══ THE PROBLEM ════════════════════════════════════════ -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="problem-grid">
+
+      <div>
+        <p class="section-label">The Problem</p>
+        <h2>Hunger is the <em>hidden lesson</em> no child should learn.</h2>
+        <p class="body-lg">
+          In Ndhiwa Sub-County, widespread poverty means thousands of children walk into classrooms every morning having eaten little — or nothing at all. A hungry mind cannot focus, retain, or grow.
+        </p>
+        <p class="body-lg">
+          Existing feeding programs are inconsistent, limited in reach, and prioritize calories over nutritional quality. We're changing that.
+        </p>
+      </div>
+
+      <div class="problem-cards">
+        <div class="problem-card reveal">
+          <div class="problem-card-icon">😔</div>
+          <div>
+            <h4>Poor Concentration & Performance</h4>
+            <p>Hunger directly impairs cognitive function. Children who arrive unfed struggle to absorb lessons, participate, or perform at their potential.</p>
+          </div>
+        </div>
+        <div class="problem-card reveal reveal-delay-1">
+          <div class="problem-card-icon">📉</div>
+          <div>
+            <h4>High Absenteeism & Dropout</h4>
+            <p>Food insecurity at home translates into irregular attendance and early dropout, particularly among girls and children from the most vulnerable households.</p>
+          </div>
+        </div>
+        <div class="problem-card reveal reveal-delay-2">
+          <div class="problem-card-icon">🌾</div>
+          <div>
+            <h4>Carbohydrate-Only Diets</h4>
+            <p>Where meals exist, they're often ugali alone — no protein, no vegetables. Children are fed, but not nourished. Micronutrient deficiencies quietly harm their growth.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Photo mosaic — replace placeholders with Cloudinary images -->
+    <div class="photo-mosaic" style="margin-top:72px;">
+      <div class="photo-slot">
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.16_PM_xs6aom.jpg" alt="School visit" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+      <div class="photo-slot">
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.21_PM_r2phkk.jpg" alt="School visit" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+      <div class="photo-slot">
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.21_PM_1_ruanic.jpg" alt="School visit" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ════════════════════════════════════════ -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="how-header">
+      <p class="section-label">How It Works</p>
+      <h2>Simple, local, <em>dignified.</em></h2>
+      <p class="how-intro">
+        We partner directly with schools, source food from local farmers, and use existing school kitchens — keeping costs low and community benefit high.
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-icon">🏫</div>
+        <div class="step-num">1</div>
+        <h3>School Selection</h3>
+        <p>We identify public primary schools in Ndhiwa with the highest proportion of vulnerable learners and no consistent feeding program, working with Sub-County education offices.</p>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-icon">🛒</div>
+        <div class="step-num">2</div>
+        <h3>Local Procurement</h3>
+        <p>Dry foods are bought in bulk from local markets. Vegetables are sourced seasonally from nearby farmers — supporting local livelihoods while reducing costs.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-icon">🍽️</div>
+        <div class="step-num">3</div>
+        <h3>Hot Meal, Every Day</h3>
+        <p>Using existing school kitchens, trained cooks prepare one balanced hot lunch per feeding day — served during the official lunch break, 3 days per week during the pilot.</p>
+      </div>
+    </div>
+
+    <div class="meal-plate reveal">
+      <h3>What's on the Plate</h3>
+      <div class="meal-items">
+        <div class="meal-item">
+          <span>🌽</span>
+          <p>Cereals & Staples</p>
+          <small>Ugali, rice, sweet potato</small>
+        </div>
+        <div class="meal-item">
+          <span>🫘</span>
+          <p>Protein</p>
+          <small>Beans, lentils, green grams</small>
+        </div>
+        <div class="meal-item">
+          <span>🥬</span>
+          <p>Vegetables</p>
+          <small>Sukuma, managu, kunde</small>
+        </div>
+        <div class="meal-item">
+          <span>🥚</span>
+          <p>Occasional Eggs</p>
+          <small>Protein boost</small>
+        </div>
+        <div class="meal-item">
+          <span>🍊</span>
+          <p>Seasonal Fruit</p>
+          <small>Micronutrient support</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ IMPACT ═════════════════════════════════════════════ -->
+<section class="impact" id="impact">
+  <div class="container">
+    <div class="impact-grid">
+
+      <div class="impact-numbers reveal">
+        <div class="impact-num-card">
+          <div class="impact-num">100<sup>+</sup></div>
+          <div class="impact-num-label">Learners fed in pilot phase</div>
+        </div>
+        <div class="impact-num-card">
+          <div class="impact-num">KES<br>42K</div>
+          <div class="impact-num-label">Monthly cost for 100 learners</div>
+        </div>
+        <div class="impact-num-card">
+          <div class="impact-num">3</div>
+          <div class="impact-num-label">Feeding days per week</div>
+        </div>
+        <div class="impact-num-card">
+          <div class="impact-num">6</div>
+          <div class="impact-num-label">Grade levels targeted</div>
+        </div>
+      </div>
+
+      <div class="impact-right reveal reveal-delay-1">
+        <p class="section-label">Our Impact</p>
+        <h2>More than food. <em>A future.</em></h2>
+        <p class="body-lg">
+          Every meal served is an investment in a child's ability to sit, focus, engage, and achieve. Attendance improves. Teachers notice the difference. Parents trust school more.
+        </p>
+        <blockquote class="impact-quote">
+          "A child who eats well today is a problem-solver, a leader, and a contributor tomorrow."
+          <cite>— Hot Meals High Grades Founding Vision</cite>
+        </blockquote>
+        <p class="body-lg">
+          Our pilot phase collects data on attendance, concentration, and performance — building the evidence base to scale to more schools and more grades across Homa Bay County.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ════════════════════════════════════════════ -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <p class="section-label" style="justify-content:center;display:flex;align-items:center;">From the Ground</p>
+      <h2>Moments from <em>Ndhiwa</em></h2>
+      <p>Real visits, real schools, real children. These moments remind us why every shilling counts.</p>
+    </div>
+
+    <!-- Gallery grid — swap placeholders for Cloudinary images -->
+    <div class="gallery-grid">
+      <div class="gallery-slot tall">
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.20_PM_hifg9g.jpg" alt="Gallery photo" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+      <div class="gallery-slot">
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.16_PM_3_x5e1pm.jpg" alt="Gallery photo" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+      <div class="gallery-slot">
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.24_PM_1_dbjgap.jpg" alt="Gallery photo" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+      <div class="gallery-slot wide">
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.18_PM_1_efsoxd.jpg" alt="Gallery photo" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXTRA GALLERY STRIP ════════════════════════════════ -->
+<section style="padding:0 0 100px;background:var(--warm-white);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:220px 220px;gap:12px;border-radius:12px;overflow:hidden;">
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.23_PM_vb2sqz.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.19_PM_1_l5s2ba.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.18_PM_qknjc5.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.19_PM_gdzdjp.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.15_PM_1_ts1bgl.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.17_PM_ntutxc.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.24_PM_ptmpvd.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.14_PM_stmf0h.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.15_PM_poxxgq.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_1.49.11_PM_kvd4fg.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BUDGET / TRANSPARENCY ══════════════════════════════ -->
+<section class="budget" id="budget">
+  <div class="container">
+    <div style="margin-bottom:56px;">
+      <p class="section-label">Financial Transparency</p>
+      <h2>We show you exactly <em>where your money goes.</em></h2>
+    </div>
+
+    <div class="budget-inner">
+      <div class="cost-card reveal">
+        <h3>Cost Per Child</h3>
+        <div class="cost-big">KES <sup></sup>35</div>
+        <p class="cost-sub">per child · per hot meal · fully nutritious</p>
+
+        <div class="cost-scenarios">
+          <div class="cost-scenario">
+            <div>
+              <p>100 learners · 3 days/week</p>
+              <p style="font-size:12px;color:rgba(255,255,255,.4)">Monthly</p>
+            </div>
+            <strong>KES 42,000</strong>
+          </div>
+          <div class="cost-scenario">
+            <div>
+              <p>200 learners · 3 days/week</p>
+              <p style="font-size:12px;color:rgba(255,255,255,.4)">Monthly</p>
+            </div>
+            <strong>KES 84,000</strong>
+          </div>
+        </div>
+
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);">
+          <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;">Every purchase uses bulk buying, local sourcing, and community cooks — minimising overhead so maximum value reaches the child.</p>
+        </div>
+      </div>
+
+      <div class="budget-breakdown reveal reveal-delay-1">
+        <h3>Breakdown per Child, per Meal</h3>
+        <table class="breakdown-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Notes</th>
+              <th>KES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🌽 Cereals & Legumes</td>
+              <td style="font-size:13px;color:var(--text-light);">Maize/rice + beans/lentils</td>
+              <td>20</td>
+            </tr>
+            <tr>
+              <td>🥬 Vegetables & Fruit</td>
+              <td style="font-size:13px;color:var(--text-light);">Sukuma, managu, seasonal fruit</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>🫙 Cooking Oil & Salt</td>
+              <td style="font-size:13px;color:var(--text-light);">Shared across meals</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>🔥 Cooking Fuel</td>
+              <td style="font-size:13px;color:var(--text-light);">Firewood / LPG contribution</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>👩‍🍳 Cook & Logistics</td>
+              <td style="font-size:13px;color:var(--text-light);">Token stipend & support</td>
+              <td>2</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2">Total per child per meal</td>
+              <td>KES 35</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div style="margin-top:40px;padding:24px;background:var(--green-pale);border-radius:8px;">
+          <p style="font-size:14px;line-height:1.7;color:var(--green);font-weight:500;">
+            💡 <strong>KES 1,050</strong> feeds one child for an entire month (3 days/week, 4 weeks). That's less than a typical family's mobile data spend.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARTNERS ════════════════════════════════════════════ -->
+<section class="partners">
+  <div class="container">
+    <div class="partners-inner">
+      <p class="partners-label">Partners & Collaborators</p>
+      <div class="partner-logos">
+        <div class="partner-pill">Ndhiwa Sub-County Education Office</div>
+        <div class="partner-pill">Homa Bay County Government</div>
+        <div class="partner-pill">Local Farmers & Women Groups</div>
+        <div class="partner-pill">Parents' Associations</div>
+        <div class="partner-pill">School Boards of Management</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DONATE CTA ═════════════════════════════════════════ -->
+<section class="cta-section" id="donate">
+  <div class="container" style="position:relative;z-index:1;">
+    <p class="section-label">Make a Difference</p>
+    <h2>Feed a child.<br><em>Change a future.</em></h2>
+    <p>
+      KES 35 is one hot, balanced meal. KES 1,050 is a month of lunches. Whatever you give, it goes directly to a child who needs it most.
+    </p>
+    <div class="cta-actions">
+      <!--
+        PAYSTACK INTEGRATION:
+        Replace this button's onclick with your Paystack popup handler.
+        e.g.: onclick="payWithPaystack()"
+      -->
+      <button class="btn btn--gold" onclick="alert('Paystack donation coming soon! We\'re setting this up. Thank you for your heart.')">
+        ❤️ &nbsp;Donate via Paystack
+      </button>
+      <a href="/cdn-cgi/l/email-protection#82e1edecf6e3e1f6c2eaedf6efe7e3eef1eaebe5eae5f0e3e6e7f1acedf0e5" class="btn btn--white-ghost">
+        ✉️ &nbsp;Partner With Us
+      </a>
+    </div>
+    <p class="donation-note">Paystack integration active soon. Contact us to donate by M-Pesa or bank transfer in the meantime.</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_200/ojiko/WhatsApp_Image_2026-03-30_at_7.58.03_PM_of12uu.jpg" alt="Hot Meals High Grades logo" style="height:48px;width:auto;object-fit:contain;border-radius:4px;" />
+        </div>
+        <p>Providing nutritious lunch meals to public primary school learners in Ndhiwa Sub-County, Homa Bay — because every child deserves to learn on a full stomach.</p>
+        <div class="footer-tagline">Serving Plates of Promise to the Next Generation</div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#problem">The Problem</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#impact">Our Impact</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#budget">Transparency</a></li>
+          <li><a href="#donate">Donate</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#donate">Donate</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#c5a6aaabb1a4a6b185adaab1a8a0a4a9b6adaca2ada2b7a4a1a0b6ebaab7a2">Partner With Us</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#caa9a5a4beaba9be8aa2a5bea7afaba6b9a2a3ada2adb8abaeafb9e4a5b8ad">Volunteer</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#b8dbd7d6ccd9dbccf8d0d7ccd5ddd9d4cbd0d1dfd0dfcad9dcddcb96d7cadf">Sponsor a School</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Hot Meals High Grades. All rights reserved. Registered in Kenya.</p>
+      <p>Built with 🧡 for every child who deserves better.</p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // ── Intersection Observer for reveal animations
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── Mobile menu toggle (basic)
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    if (!links) return;
+    if (links.style.display === 'flex') {
+      links.style.display = '';
+    } else {
+      links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--warm-white);padding:24px 28px;border-bottom:1px solid var(--mist);gap:20px;z-index:99;box-shadow:0 8px 32px rgba(0,0,0,.08);';
+    }
+  }
+
+  // ── Duplicate marquee for seamless loop
+  const track = document.getElementById('marquee');
+  track.innerHTML += track.innerHTML;
+</script>
+</body>
+</html>
