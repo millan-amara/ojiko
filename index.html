@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hot Meals High Grades — Serving Plates of Promise</title>
+<title>Hot Meals Better Grades — Serving Plates of Promise</title>
+<link rel="icon" type="image/png" href="meals_logoo.png" />
+<link rel="apple-touch-icon" href="meals_logoo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -639,7 +641,7 @@
   }
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.8fr 1fr 1fr;
+    grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
     gap: 60px;
     padding-bottom: 56px;
     border-bottom: 1px solid rgba(255,255,255,.07);
@@ -679,10 +681,36 @@
 
   /* ── RESPONSIVE ────────────────────────────────────── */
   @media (max-width: 1024px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 100px 28px 60px 28px; }
-    .hero-right { height: 480px; }
-    .hero-card { left: 20px; bottom: 32px; }
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: calc(100vh - 72px);
+    }
+    .hero-right { display: none; }
+    .hero-left {
+      padding: 120px 28px 60px 28px;
+      min-height: calc(100vh - 72px);
+      background:
+        linear-gradient(180deg, rgba(26,18,8,.55) 0%, rgba(26,18,8,.78) 55%, rgba(42,107,60,.88) 100%),
+        url('https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_1600/ojiko/WhatsApp_Image_2026-03-31_at_10.51.26_PM_u0ksdy.jpg') center/cover no-repeat;
+      color: #fff;
+    }
+    .hero-left h1 { color: #fff; }
+    .hero-left h1 em { color: var(--gold); }
+    .hero-left .hero-sub { color: rgba(255,255,255,.88); }
+    .hero-left .hero-eyebrow span { color: var(--gold); }
+    .hero-left .hero-eyebrow-line { background: var(--gold); }
+    .hero-left .hero-stats { border-top-color: rgba(255,255,255,.2); }
+    .hero-left .stat-num { color: var(--gold); }
+    .hero-left .stat-label { color: rgba(255,255,255,.75); }
+    .hero-left .btn--ghost {
+      color: #fff;
+      border-color: rgba(255,255,255,.5);
+      background: rgba(255,255,255,.05);
+    }
+    .hero-left .btn--ghost:hover {
+      background: rgba(255,255,255,.12);
+      border-color: #fff;
+    }
     .problem-grid, .impact-grid, .budget-inner, .footer-grid { grid-template-columns: 1fr; gap: 48px; }
     .impact-numbers { grid-template-columns: 1fr 1fr; }
     .steps { grid-template-columns: 1fr; }
@@ -696,9 +724,11 @@
   @media (max-width: 768px) {
     .nav-links, .nav-cta .btn { display: none; }
     .hamburger { display: flex; }
-    h1 { font-size: 44px; }
-    .hero-left { padding: 100px 24px 48px 24px; }
-    .hero-stats { flex-wrap: wrap; gap: 28px; }
+    h1 { font-size: clamp(36px, 8.5vw, 52px); line-height: 1.08; }
+    .hero-sub { font-size: 16px; margin-bottom: 32px; }
+    .hero-left { padding: 110px 24px 48px 24px; }
+    .hero-stats { flex-wrap: wrap; gap: 24px; margin-top: 40px; padding-top: 28px; }
+    .stat-num { font-size: 28px; }
     .photo-mosaic { grid-template-rows: 200px 200px; }
     .meal-items { grid-template-columns: 1fr 1fr; }
     .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
@@ -722,9 +752,9 @@
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_200/ojiko/WhatsApp_Image_2026-03-30_at_7.58.03_PM_of12uu.jpg" alt="Hot Meals High Grades logo" style="height:56px;width:auto;object-fit:contain;" />
+        <img src="meals_logoo.png" alt="Hot Meals Better Grades logo" style="height:56px;width:auto;object-fit:contain;" />
         <div class="nav-logo-text">
-          <strong>Hot Meals High Grades</strong>
+          <strong>Hot Meals Better Grades</strong>
           <span>Serving Plates of Promise</span>
         </div>
       </a>
@@ -794,7 +824,7 @@
 <!-- ══ MARQUEE ════════════════════════════════════════════ -->
 <div class="marquee-bar" aria-hidden="true">
   <div class="marquee-track" id="marquee">
-    <span>Hot Meals, High Grades</span>
+    <span>Hot Meals, Better Grades</span>
     <span>Ndhiwa Sub-County</span>
     <span>Grade 1 to Grade 6</span>
     <span>Locally Sourced Food</span>
@@ -802,7 +832,7 @@
     <span>Serving Plates of Promise</span>
     <span>Homa Bay County</span>
     <span>Community Powered</span>
-    <span>Hot Meals, High Grades</span>
+    <span>Hot Meals, Better Grades</span>
     <span>Ndhiwa Sub-County</span>
     <span>Grade 1 to Grade 6</span>
     <span>Locally Sourced Food</span>
@@ -966,7 +996,7 @@
         </p>
         <blockquote class="impact-quote">
           &ldquo;A child who eats well today is a problem-solver, a leader, and a contributor tomorrow.&rdquo;
-          <cite>&mdash; Hot Meals High Grades Founding Vision</cite>
+          <cite>&mdash; Hot Meals Better Grades Founding Vision</cite>
         </blockquote>
         <p class="body-lg">
           Our pilot phase collects data on attendance, concentration, and performance &mdash; building the evidence base to scale to more schools and more grades across Homa Bay County.
@@ -1154,7 +1184,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
-          <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_200/ojiko/WhatsApp_Image_2026-03-30_at_7.58.03_PM_of12uu.jpg" alt="Hot Meals High Grades logo" style="height:48px;width:auto;object-fit:contain;border-radius:4px;" />
+          <img src="meals_logoo.png" alt="Hot Meals Better Grades logo" style="height:48px;width:auto;object-fit:contain;border-radius:4px;" />
         </div>
         <p>Providing nutritious lunch meals to public primary school learners in Ndhiwa Sub-County, Homa Bay &mdash; because every child deserves to learn on a full stomach.</p>
         <div class="footer-tagline">Serving Plates of Promise to the Next Generation</div>
@@ -1181,10 +1211,18 @@
           <li><a href="mailto:contact@hotmealshighgrades.org">Sponsor a School</a></li>
         </ul>
       </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>Ambank Towers, 17th Floor<br>Nairobi, Kenya</li>
+          <li><a href="mailto:hello@hotmealsbettergrades.org">hello@hotmealsbettergrades.org</a></li>
+        </ul>
+      </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2025 Hot Meals High Grades. All rights reserved. Registered in Kenya.</p>
+      <p>&copy; 2025 Hot Meals Better Grades. All rights reserved. Registered in Kenya.</p>
       <p>Built with &#x1F9E1; for every child who deserves better.</p>
     </div>
   </div>
