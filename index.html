@@ -4,11 +4,27 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hot Meals Better Grades — Serving Plates of Promise</title>
+<meta name="description" content="Hot Meals Better Grades provides nutritious lunch meals to public primary school learners across Kenya — starting with our pilot in Ndhiwa Sub-County, Homa Bay. KES 35 feeds one child for a day." />
+<meta name="theme-color" content="#2A6B3C" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Hot Meals Better Grades — Serving Plates of Promise" />
+<meta property="og:description" content="Nutritious lunch meals for public primary school learners across Kenya, starting in Ndhiwa, Homa Bay. KES 35 feeds one child for a day." />
+<meta property="og:image" content="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_1200/ojiko/WhatsApp_Image_2026-03-31_at_10.51.26_PM_u0ksdy.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Hot Meals Better Grades" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Hot Meals Better Grades — Serving Plates of Promise" />
+<meta name="twitter:description" content="Nutritious lunch meals for public primary school learners across Kenya, starting in Ndhiwa, Homa Bay. KES 35 feeds one child for a day." />
+<meta name="twitter:image" content="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_1200/ojiko/WhatsApp_Image_2026-03-31_at_10.51.26_PM_u0ksdy.jpg" />
+
 <link rel="icon" type="image/png" href="meals_logoo.png" />
 <link rel="apple-touch-icon" href="meals_logoo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
 
 <style>
   /* ── DESIGN TOKENS ─────────────────────────────────── */
@@ -124,8 +140,29 @@
   }
   .nav-links a:hover { color: var(--green); }
   .nav-cta { display: flex; align-items: center; gap: 12px; }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
+  .hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px;
+    padding: 8px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+  }
+  .hamburger:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transform-origin: center;
+    transition: transform .25s ease, opacity .2s ease;
+  }
+  .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-mobile-only { display: none; }
+  body.menu-open { overflow: hidden; }
 
   /* ── HERO ───────────────────────────────────────────── */
   .hero {
@@ -159,7 +196,9 @@
     line-height: 1.05;
     color: var(--bark);
     margin-bottom: 28px;
+    text-wrap: balance;
   }
+  h2 { text-wrap: balance; }
   h1 em {
     font-style: italic;
     color: var(--green);
@@ -632,6 +671,44 @@
     margin-top: 32px;
     font-size: 13px; color: rgba(255,255,255,.4);
   }
+  .donate-methods {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 640px;
+    margin: 0 auto 40px;
+    text-align: left;
+  }
+  .donate-method {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px;
+    padding: 24px 24px 20px;
+  }
+  .donate-method-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .donate-method-line {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 12px;
+    padding: 6px 0;
+    font-size: 13px; color: rgba(255,255,255,.55);
+  }
+  .donate-method-line strong {
+    color: #fff; font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; letter-spacing: .01em;
+  }
+  .donate-method-hint {
+    margin-top: 10px;
+    font-size: 12px; color: rgba(255,255,255,.4);
+    line-height: 1.5;
+  }
+  @media (max-width: 600px) {
+    .donate-methods { grid-template-columns: 1fr; }
+  }
 
   /* ── FOOTER ────────────────────────────────────────── */
   footer {
@@ -722,8 +799,37 @@
     .cost-card { position: static; }
   }
   @media (max-width: 768px) {
-    .nav-links, .nav-cta .btn { display: none; }
+    .nav-cta .btn { display: none; }
     .hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: var(--warm-white);
+      padding: 8px 28px 24px;
+      border-bottom: 1px solid var(--mist);
+      box-shadow: 0 12px 32px rgba(0,0,0,.08);
+      max-height: calc(100vh - 72px);
+      overflow-y: auto;
+    }
+    .nav-links.is-open { display: flex; }
+    .nav-links li { width: 100%; border-bottom: 1px solid var(--mist); }
+    .nav-links li:last-child { border-bottom: 0; }
+    .nav-links li a {
+      display: block;
+      padding: 18px 4px;
+      font-size: 16px;
+      color: var(--text);
+    }
+    .nav-mobile-only { display: list-item; padding-top: 16px; }
+    .nav-mobile-only a.btn {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 24px;
+    }
     h1 { font-size: clamp(36px, 8.5vw, 52px); line-height: 1.08; }
     .hero-sub { font-size: 16px; margin-bottom: 32px; }
     .hero-left { padding: 110px 24px 48px 24px; }
@@ -754,42 +860,41 @@
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <img src="meals_logoo.png" alt="Hot Meals Better Grades logo" style="height:56px;width:auto;object-fit:contain;" />
+        <img src="meals_logoo.png" alt="Hot Meals Better Grades logo" width="56" height="56" decoding="async" style="height:56px;width:auto;object-fit:contain;" />
         <div class="nav-logo-text">
           <strong>Hot Meals Better Grades</strong>
           <span>Serving Plates of Promise</span>
         </div>
       </a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-menu">
         <li><a href="#problem">The Problem</a></li>
         <li><a href="#how">How It Works</a></li>
         <li><a href="#impact">Impact</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#budget">Transparency</a></li>
+        <li class="nav-mobile-only"><a href="#donate" class="btn btn--orange">Donate Now</a></li>
       </ul>
       <div class="nav-cta">
         <a href="#donate" class="btn btn--orange">Donate Now</a>
       </div>
-      <div class="hamburger" onclick="toggleMenu()">
+      <button class="hamburger" type="button" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
   </div>
 </nav>
 
+<main>
+
 <!-- ══ HERO ══════════════════════════════════════════════ -->
 <section class="hero" id="home">
   <div class="hero-left container">
-    <!-- <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <span>Ndhiwa Sub-County, Homa Bay</span>
-    </div> -->
     <h1>
       Every child<br>deserves to<br>
       <em>learn on a full stomach.</em>
     </h1>
     <p class="hero-sub">
-      Hunger doesn't wait for the school bell. We're bringing hot, nutritious lunches to public primary school learners across Kenya — because a fed child is a child who can dream.
+      Hunger doesn't wait for the school bell. We're bringing hot, nutritious lunches to public primary school learners across Kenya — starting in Ndhiwa Sub-County, Homa Bay — because a fed child is a child who can dream.
     </p>
     <div class="hero-actions">
       <a href="#donate" class="btn btn--orange">
@@ -814,11 +919,11 @@
   </div>
 
   <div class="hero-right">
-    <img class="hero-img-main" src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_1600/ojiko/WhatsApp_Image_2026-03-31_at_10.51.26_PM_u0ksdy.jpg" alt="Children at school in Ndhiwa" />
+    <img class="hero-img-main" src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_1600/ojiko/WhatsApp_Image_2026-03-31_at_10.51.26_PM_u0ksdy.jpg" alt="Ndhiwa primary school learners gathered in their classroom" width="1600" height="1067" fetchpriority="high" decoding="async" />
     <div class="hero-overlay-text">Ndhiwa</div>
     <div class="hero-card">
       <div class="hero-card-icon">&#x1F957;</div>
-      <p>Balanced meals include <strong>proteins, vegetables</strong> and locally sourced staples &mdash; designed by nutrition.</p>
+      <p>Balanced meals include <strong>proteins, vegetables</strong> and locally sourced staples &mdash; built on nutritional science.</p>
     </div>
   </div>
 </section>
@@ -889,13 +994,13 @@
 
     <div class="photo-mosaic" style="margin-top:72px;">
       <div class="photo-slot">
-        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.16_PM_xs6aom.jpg" alt="School visit" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.16_PM_xs6aom.jpg" alt="Learners waiting together outside their classroom in Ndhiwa" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;" />
       </div>
       <div class="photo-slot">
-        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.21_PM_r2phkk.jpg" alt="School visit" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.21_PM_r2phkk.jpg" alt="A teacher engaging with pupils during a school visit" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;" />
       </div>
       <div class="photo-slot">
-        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.21_PM_1_ruanic.jpg" alt="School visit" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.21_PM_1_ruanic.jpg" alt="Children lined up in the school compound at midday" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;" />
       </div>
     </div>
   </div>
@@ -1014,22 +1119,22 @@
   <div class="container">
     <div class="gallery-header">
       <p class="section-label" style="justify-content:center;display:flex;align-items:center;">From the Ground</p>
-      <h2>Moments from <em>Ndhiwa</em></h2>
-      <p>Real visits, real schools, real children. These moments remind us why every shilling counts.</p>
+      <h2>Moments from our <em>first pilot</em></h2>
+      <p>Faces, classrooms, and kitchens from Ndhiwa &mdash; the first chapter of a story we intend to keep writing, one school at a time.</p>
     </div>
 
     <div class="gallery-grid">
       <div class="gallery-slot tall">
-        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.20_PM_hifg9g.jpg" alt="Gallery photo" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.20_PM_hifg9g.jpg" alt="Pupils in uniform smiling at the school gate" loading="lazy" decoding="async" width="900" height="1350" style="width:100%;height:100%;object-fit:cover;" />
       </div>
       <div class="gallery-slot">
-        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.16_PM_3_x5e1pm.jpg" alt="Gallery photo" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.16_PM_3_x5e1pm.jpg" alt="Children sharing a moment during break time" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;" />
       </div>
       <div class="gallery-slot">
-        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.24_PM_1_dbjgap.jpg" alt="Gallery photo" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.24_PM_1_dbjgap.jpg" alt="Classroom interior with pupils seated at desks" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;" />
       </div>
       <div class="gallery-slot wide">
-        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.18_PM_1_efsoxd.jpg" alt="Gallery photo" style="width:100%;height:100%;object-fit:cover;" />
+        <img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.18_PM_1_efsoxd.jpg" alt="Wide view of the schoolyard during an assembly" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;" />
       </div>
     </div>
   </div>
@@ -1039,16 +1144,16 @@
 <section style="padding:0 0 100px;background:var(--warm-white);">
   <div class="container">
     <div class="extra-gallery" style="display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:220px 220px;gap:12px;border-radius:12px;overflow:hidden;">
-      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.23_PM_vb2sqz.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
-      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.19_PM_1_l5s2ba.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
-      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.18_PM_qknjc5.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
-      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.19_PM_gdzdjp.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
-      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.15_PM_1_ts1bgl.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
-      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.17_PM_ntutxc.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
-      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.24_PM_ptmpvd.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
-      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.14_PM_stmf0h.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
-      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.15_PM_poxxgq.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
-      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_1.49.11_PM_kvd4fg.jpg" alt="School visit photo" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.23_PM_vb2sqz.jpg" alt="Pupils posing for a group photo at school" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.19_PM_1_l5s2ba.jpg" alt="Children chatting during the morning assembly" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.18_PM_qknjc5.jpg" alt="Students walking into the school building" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.19_PM_gdzdjp.jpg" alt="Pupil carrying books across the schoolyard" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.15_PM_1_ts1bgl.jpg" alt="Classroom view with children at their desks" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.17_PM_ntutxc.jpg" alt="Teacher engaging with learners in a lesson" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.24_PM_ptmpvd.jpg" alt="Group of pupils gathered outside the classroom" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.14_PM_stmf0h.jpg" alt="Children smiling together during the school day" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_10.51.15_PM_poxxgq.jpg" alt="Learners outdoors at Ndhiwa primary school" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
+      <div style="overflow:hidden;"><img src="https://res.cloudinary.com/dcj3qavxy/image/upload/f_auto,q_auto,w_900/ojiko/WhatsApp_Image_2026-03-31_at_1.49.11_PM_kvd4fg.jpg" alt="Midday moment at the school during a site visit" loading="lazy" decoding="async" width="900" height="600" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></div>
     </div>
   </div>
 </section>
@@ -1064,7 +1169,7 @@
     <div class="budget-inner">
       <div class="cost-card reveal">
         <h3>Cost Per Child</h3>
-        <div class="cost-big">KES <sup></sup>35</div>
+        <div class="cost-big"><sup>KES</sup>35</div>
         <p class="cost-sub">per child &middot; per hot meal &middot; fully nutritious</p>
 
         <div class="cost-scenarios">
@@ -1168,17 +1273,34 @@
     <p>
       KES 35 is one hot, balanced meal. KES 1,050 is a month of lunches. Whatever you give, it goes directly to a child who needs it most.
     </p>
+    <div class="donate-methods">
+      <div class="donate-method">
+        <div class="donate-method-label">M-Pesa</div>
+        <p class="donate-method-line"><span>Paybill</span><strong>[PAYBILL]</strong></p>
+        <p class="donate-method-line"><span>Account</span><strong>[ACCOUNT NO.]</strong></p>
+        <p class="donate-method-hint">Go to M-Pesa &rarr; Lipa na M-Pesa &rarr; Pay Bill</p>
+      </div>
+      <div class="donate-method">
+        <div class="donate-method-label">Bank Transfer</div>
+        <p class="donate-method-line"><span>Bank</span><strong>[BANK NAME]</strong></p>
+        <p class="donate-method-line"><span>Account</span><strong>[ACCOUNT NO.]</strong></p>
+        <p class="donate-method-hint">Reference: your name + "feeding"</p>
+      </div>
+    </div>
+
     <div class="cta-actions">
-      <button class="btn btn--gold" onclick="alert('Paystack donation coming soon! We\'re setting this up. Thank you for your heart.')">
-        &#10084;&#65039; &nbsp;Donate via Paystack
-      </button>
-      <a href="mailto:contact@hotmealshighgrades.org" class="btn btn--white-ghost">
+      <a href="mailto:hello@hotmealsbettergrades.org" class="btn btn--gold">
         &#x2709;&#xFE0F; &nbsp;Partner With Us
       </a>
+      <a href="mailto:hello@hotmealsbettergrades.org?subject=Card%20donation%20request" class="btn btn--white-ghost">
+        &#10084;&#65039; &nbsp;Donate by Card (Paystack)
+      </a>
     </div>
-    <p class="donation-note">Paystack integration active soon. Contact us to donate by M-Pesa or bank transfer in the meantime.</p>
+    <p class="donation-note">Card payments via Paystack are being set up. In the meantime, M-Pesa or bank transfer above works right away &mdash; or email us and we&rsquo;ll send a link.</p>
   </div>
 </section>
+
+</main>
 
 <!-- ══ FOOTER ═════════════════════════════════════════════ -->
 <footer>
@@ -1186,9 +1308,9 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
-          <img src="meals_logoo.png" alt="Hot Meals Better Grades logo" style="height:48px;width:auto;object-fit:contain;border-radius:4px;" />
+          <img src="meals_logoo.png" alt="Hot Meals Better Grades logo" width="48" height="48" loading="lazy" decoding="async" style="height:48px;width:auto;object-fit:contain;border-radius:4px;" />
         </div>
-        <p>Providing nutritious lunch meals to public primary school learners in Ndhiwa Sub-County, Homa Bay &mdash; because every child deserves to learn on a full stomach.</p>
+        <p>Providing nutritious lunch meals to public primary school learners across Kenya &mdash; starting in Ndhiwa Sub-County, Homa Bay &mdash; because every child deserves to learn on a full stomach.</p>
         <div class="footer-tagline">Serving Plates of Promise to the Next Generation</div>
       </div>
 
@@ -1208,9 +1330,9 @@
         <h4>Get Involved</h4>
         <ul>
           <li><a href="#donate">Donate</a></li>
-          <li><a href="mailto:contact@hotmealshighgrades.org">Partner With Us</a></li>
-          <li><a href="mailto:contact@hotmealshighgrades.org">Volunteer</a></li>
-          <li><a href="mailto:contact@hotmealshighgrades.org">Sponsor a School</a></li>
+          <li><a href="mailto:hello@hotmealsbettergrades.org">Partner With Us</a></li>
+          <li><a href="mailto:hello@hotmealsbettergrades.org">Volunteer</a></li>
+          <li><a href="mailto:hello@hotmealsbettergrades.org">Sponsor a School</a></li>
         </ul>
       </div>
 
@@ -1224,7 +1346,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2025 Hot Meals Better Grades. All rights reserved. Registered in Kenya.</p>
+      <p>&copy; 2026 Hot Meals Better Grades. All rights reserved. Registered in Kenya.</p>
       <p>Built with &#x1F9E1; for every child who deserves better.</p>
     </div>
   </div>
@@ -1247,15 +1369,30 @@
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
 
-  function toggleMenu() {
-    const links = document.querySelector('.nav-links');
-    if (!links) return;
-    if (links.style.display === 'flex') {
-      links.style.display = '';
-    } else {
-      links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--warm-white);padding:24px 28px;border-bottom:1px solid var(--mist);gap:20px;z-index:99;box-shadow:0 8px 32px rgba(0,0,0,.08);';
-    }
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const navMenu = document.getElementById('nav-menu');
+  function closeMenu() {
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    hamburgerBtn.setAttribute('aria-label', 'Open menu');
+    navMenu.classList.remove('is-open');
+    document.body.classList.remove('menu-open');
   }
+  function openMenu() {
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    hamburgerBtn.setAttribute('aria-label', 'Close menu');
+    navMenu.classList.add('is-open');
+    document.body.classList.add('menu-open');
+  }
+  hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+  });
+  navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
+      hamburgerBtn.focus();
+    }
+  });
 
   const track = document.getElementById('marquee');
   track.innerHTML += track.innerHTML;
